@@ -1,21 +1,17 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import TodoApp from './components/App'
-import TodoStore from './stores/TodoStore'
-import ViewStore from './stores/ViewStore'
-
-const initialState = {}
-const todoStore = []
-const viewStore = {}
+import TodoApp from './View/App'
+import { Provider } from 'mobx-react';
+import RootStore from './Store/RootStore'
 
 
-/* const todoStore = TodoStore.fromJS( initialState.todos || [])
-const viewStore = new ViewStore()
-
-todoStore.subscribeServerToStore() */
+const Store = new RootStore()
 
 const appContainer = document.getElementById('app')
 
 
-
-ReactDOM.render( <TodoApp todoStore={todoStore} ViewStore={ViewStore}/>,  appContainer)
+ReactDOM.render(
+  <Provider store={Store}>
+    <TodoApp />
+  </Provider>
+,  appContainer)
