@@ -16,14 +16,10 @@ class TodoApp extends React.Component<PropsType> {
   render(): React.Node {
 
     const {todos} = this.props.store
-    todos.forEach( item => {
-      console.log('item -> ', toJS(item));
-    })
-
 
     return (
       <React.Fragment>
-        {todos.map(( todo ) => <Todo key={todo.id} {...todo} />)}
+        {todos && todos.map(( todo ) => <Todo key={todo.id} {...todo} />)}
       </React.Fragment>
     )
   }

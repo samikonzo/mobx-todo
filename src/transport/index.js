@@ -1,4 +1,8 @@
 // @flow
+import constants from '../../config/const'
+import transportConstants from './consts'
+
+const { apiPrefix } = constants
 
 const data = [
   {id: 1},
@@ -8,6 +12,15 @@ const data = [
 
 
 export const getTodos = () => {
+  const url = apiPrefix + transportConstants.getTodos
+
+  return fetch(url,  {
+    method: 'GET'
+  }).then( response => {
+    console.log('response.status: ', response.status);
+    return response
+  })
+/*
   return new Promise( resolve => {
 
     const response = {
@@ -18,5 +31,5 @@ export const getTodos = () => {
     setTimeout(() => {
       resolve(response)
     }, 2000)
-  })
+  }) */
 }

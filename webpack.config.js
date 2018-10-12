@@ -1,6 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
 
+var constants = require('./config/const')
+var { apiPrefix } = constants
+
 module.exports={
   mode: 'development',
   entry: './src/index.js',
@@ -39,9 +42,19 @@ module.exports={
     historyApiFallback: true,
     overlay: true,
     contentBase: path.join(__dirname, './public'),
-    host: 'localhost'
+    host: 'localhost',
+    proxy: {
+      [apiPrefix]: 'http://localhost:3000',
+    }
   },
   plugins:[
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+  ],
+
+  resolve:{
+    alias: {
+      //'@src'
+    }
+  }
 }
