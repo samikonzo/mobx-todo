@@ -1,3 +1,4 @@
+var edit = require('./edit')
 var express = require('express')
 var router = express.Router()
 
@@ -16,7 +17,23 @@ router.all('/*', (req, res, next) => {
     next()
 } )
 
+router.get('/todos', (req, res) => {
+  console.log('todos!');
 
+  edit.getTodos()
+    .then(
+      content => {
+        console.log('wow content!');
+        res.setHeader('Content-Type', 'application/json');
+        res.send( { data : content} )
+      },
+      err => {
+        console.log(' oh error');
+        res.setHeader('Content-Type', 'application/json');
+        res.send( { data: '' , err })
+      })
+
+})
 
 
 
