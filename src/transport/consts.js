@@ -1,3 +1,4 @@
 export default {
-  getTodos : '/todos'
+  getTodos : '/todos',
+  createTodo: '/todos/create'
 }

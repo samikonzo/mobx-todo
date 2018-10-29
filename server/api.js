@@ -18,7 +18,7 @@ router.all('/*', (req, res, next) => {
 } )
 
 router.get('/todos', (req, res) => {
-  console.log('todos!');
+  console.log('/todos');
 
   edit.getTodos()
     .then(
@@ -32,10 +32,12 @@ router.get('/todos', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.send( { data: '' , err })
       })
-
 })
 
-
+router.post('/todos/create', (req, res) => {
+  console.log('/todos/create');
+  console.log('req.body: ', req.body);
+})
 
 
 

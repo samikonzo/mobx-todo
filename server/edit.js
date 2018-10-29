@@ -53,7 +53,7 @@ const checkFileExist = ( ) => {
 
 const createFile = ( ) => {
   return new Promise( (resolve, reject) => {
-    fs.writeFile('server/todos/todos.json', '{}', err => {
+    fs.writeFile('server/todos/todos.json', '{"todos" : "[]"}', err => {
       if(err ) reject(err)
       else resolve()
     })

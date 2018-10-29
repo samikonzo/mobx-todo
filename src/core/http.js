@@ -13,7 +13,15 @@ const get = ( url ) => {
   })
 }
 
+const post = ( url, payload ) => {
+  return fetch( generateUrl(url), {
+    method: 'POST',
+    body: payload
+  })
+}
+
 
 export default {
-  get
+  get,
+  post
 }

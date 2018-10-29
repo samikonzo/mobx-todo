@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-import { getTodos } from '../transport'
+import { getTodos, createTodo } from '../transport'
 
 export default class RootStore{
   @observable todos = []
@@ -10,12 +10,14 @@ export default class RootStore{
 
   @action
   init = () => {
-    getTodos().then(( response ) => {
-      console.log('response: ', response);
-
-      this.todos = response.data
+    getTodos().then(( todos ) => {
+      this.todos = todos || []
     })
+  }
 
+  @action
+  createTodo = ( todo ) => {
+    createTodo(todo)
   }
 
 }
