@@ -4,6 +4,7 @@ import TodoApp from './View/App'
 import { Provider } from 'mobx-react';
 import RootStore from './Store/RootStore'
 
+import './styles.scss'
 
 const Store = new RootStore()
 

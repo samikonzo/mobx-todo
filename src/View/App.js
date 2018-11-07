@@ -7,6 +7,8 @@ import Todo from './Todo'
 
 import type { TodoAppPropsType } from '../_types'
 
+import ST from './styles/app.scss'
+
 type PropsType = TodoAppPropsType
 
 @inject('store')
@@ -30,17 +32,25 @@ class TodoApp extends React.Component<PropsType> {
 
   render(): React.Node {
     const {todos} = this.props.store
+    console.log('todos: ', todos.slice());
 
     return (
       <React.Fragment>
-        TODO LIST
-        <div className="todoCreateWrapper">
-          <input type="text" ref={this.name} />
-          <textarea ref={this.text} defaultValue=''/>
-          <button onClick={this.createTodo}> create </button>
+        <div className={ST["header"]}>
+          TODO LIST
         </div>
-        {todos && todos.map(( todo ) => <Todo key={todo.id} {...todo} />)}
 
+        <div className={ST["new-wrapper"]}>
+          <input type="text" ref={this.name} className={ST["new-name"]} placeholder='new todo name'/>
+
+          <textarea ref={this.text} defaultValue='' placeholder='new todo text...' className={ST["new-text"]}/>
+
+          <button onClick={this.createTodo} className={ST["new-confirm"]}> create </button>
+        </div>
+
+        <div className={ST["list"]}>
+          {todos && todos.map(( todo ) => <Todo key={todo.id} {...todo} />)}
+        </div>
       </React.Fragment>
     )
   }

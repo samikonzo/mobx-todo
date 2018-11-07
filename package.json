@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "server": "nodemon ./server/index.js",
-    "start": "start yarn run dev"
+    "start": "start yarn run dev && start yarn run server"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +29,8 @@
     "express": "^4.16.4",
     "flow-bin": "^0.83.0",
     "fs": "^0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.4.1",
     "mobx": "^5.5.0",
     "mobx-react": "^5.2.8",
     "node-sass": "^4.9.3",
