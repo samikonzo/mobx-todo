@@ -1,5 +1,5 @@
-import { observable, action } from 'mobx'
-import { getTodos, createTodo } from '../transport'
+import { observable, action } from "mobx"
+import { getTodos, createTodo } from "../transport"
 
 export default class RootStore{
   @observable todos = []

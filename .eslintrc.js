@@ -34,8 +34,8 @@ module.exports = {
 
 
       /* custom rules */
-
-      'no-magic-numbers': ['error']
+      'no-magic-numbers': ['error'],
+      'no-unused-vars': 1,
 
       // spaces
       'no-multi-spaces': 1,
@@ -43,6 +43,7 @@ module.exports = {
       'space-before-function-paren': 1,
       'space-infix-ops': 1,
       'indent': ["error", 2, { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }],
+      'space-before-function-paren': 'never',
 
       // react/jsx
       'react/jsx-uses-react': 'error',

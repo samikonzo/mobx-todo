@@ -1,7 +1,7 @@
 // @flow
 
-import * as React from 'react'
-import ST from './styles/todo.scss'
+import * as React from "react"
+import ST from "./styles/todo.scss"
 
 type PropsType = {
   id: number,
@@ -16,9 +16,9 @@ export default class Todo extends React.Component<PropsType, StateType> {
 
   state={}
 
-  render(): React.Node {
+  render (): React.Node {
     const { id, name, ready, text } = this.props
-    console.log('this.props: ', this.props);
+    console.log("this.props: ", this.props)
 
     return (
       <React.Fragment>
