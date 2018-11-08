@@ -16,7 +16,10 @@ const get = ( url ) => {
 const post = ( url, payload ) => {
   return fetch( generateUrl(url), {
     method: 'POST',
-    body: payload
+    body: payload,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
 }
 

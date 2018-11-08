@@ -33,12 +33,41 @@ const getTodos = () => {
       )
 
   })
+}
 
-  // create if not
-  // read file
-  // return json ?
+
+const addNewTodo = ( todo ) => {
+  return readFile()
+    .then( data => {
+      console.log('1. data: ', data);
+      return JSON.parse(data)}
+    )
+    .then( data => {
+      console.log('2. data: ', data);
+      if( typeof data.todos === 'object' ) return data.todos
+      else return JSON.parse(data.todos)
+    })
+    .then( todos => {
+      console.log('3. todos: ', todos);
+      const id = todos.length
+      todos.push( {
+        ...todo,
+        id
+      } )
+      return writeFile( JSON.stringify({todos}) ).then(() => { return id})
+    })
+    .catch( err => console.log(err))
+
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -69,7 +98,17 @@ const readFile = ( ) => {
   })
 }
 
+const writeFile = ( newData ) => {
+  return new Promise( (resolve, reject) => {
+    fs.writeFile('server/todos/todos.json', newData, 'utf-8', function (err) {
+      if (err) reject(err);
+      resolve()
+    });
+  })
+}
+
 
 module.exports = {
-  getTodos
+  getTodos,
+  addNewTodo,
 }

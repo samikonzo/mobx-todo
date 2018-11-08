@@ -2,9 +2,6 @@ var edit = require('./edit')
 var express = require('express')
 var router = express.Router()
 
-
-
-
 router.use(( req, res, next) => {
   console.log('API :');
   console.log('Method : ', req.method)
@@ -35,8 +32,15 @@ router.get('/todos', (req, res) => {
 })
 
 router.post('/todos/create', (req, res) => {
-  console.log('/todos/create');
-  console.log('req.body: ', req.body);
+  const item = req.body
+  const { name , text } = item
+
+ // res.setHeader('Content-Type', 'application/json');
+
+  edit.addNewTodo( item ).then(
+    id => res.send( String(id) ),
+    err => res.send( err )
+  )
 })
 
 

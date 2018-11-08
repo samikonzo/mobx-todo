@@ -23,4 +23,8 @@ export const getTodos = () => {
 
 export const createTodo = ( todo ) => {
   return http.post( consts.createTodo, JSON.stringify(todo) )
+    .then( response =>{
+        response.text().then( text => console.log(text))
+      })
+    .catch( err => console.log(err))
 }
